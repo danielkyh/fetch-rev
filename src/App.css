@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 150px;
+}

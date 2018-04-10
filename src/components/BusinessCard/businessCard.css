@@ -1,0 +1,12 @@
+.business-names {
+  display: flex;
+  justify-content: space-between;
+}
+
+.franchise-name {
+  font-size: 14px !important;
+}
+
+.status {
+  text-transform: capitalize;
+}
