@@ -1,5 +1,5 @@
 const buildEndpoint = (businessId) => {
-  return `http://young-temple-44207.herokuapp.com/businesses/${businessId}/subscribers`
+  return `https://young-temple-44207.herokuapp.com/businesses/${businessId}/subscribers`
 }
 
 const SubscriberApi = {
