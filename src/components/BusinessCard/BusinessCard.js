@@ -16,7 +16,7 @@ const BusinessCard = (props) => {
                 <span className="franchise-name">{business.franchise}</span>
               </span>
             </span>
-            <p><b>Revenue:</b> {Helpers.formatMoney(business.revenue_to_date_in_cents)}</p>
+            <p><b>Revenue:</b> {Helpers.formatCentsToDollars(business.revenue_to_date_in_cents)}</p>
           </div>
           <div className="card-action right-align blue-grey darken-3 blue-grey-text text-lighten-5">
             <span className="status"><b>Status:</b> {business.status}</span>
