@@ -40,7 +40,7 @@ class BusinessSubscribers extends Component {
 
   updateFilter(filter) {
     if (filter === '') {
-      this.setState({ filteredBusinesses: this.state.businesses });
+      this.setState({ filteredSubscribers: this.state.subscribers });
       return;
     }
 
