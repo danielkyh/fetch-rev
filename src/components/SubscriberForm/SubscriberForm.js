@@ -27,13 +27,18 @@ class SubscriberForm extends Component {
   }
 
   createSuccessToast() {
-    window.M.toast({html: 'Successfully Subscribed!', classes: "light-blue accent-1"})
+    this.createToast('Successfully Subscribed!', "light-blue accent-1")
     this.props.fetchSubscribers()
   }
 
   createErrorToast(errorMessage) {
+    this.createToast(errorMessage, "red darken-1")
+  }
+
+  createToast(message, color) {
     window.M.toast({
-      html: errorMessage, classes: "red darken-1"})
+      html: message, classes: color
+    })
   }
 
 
