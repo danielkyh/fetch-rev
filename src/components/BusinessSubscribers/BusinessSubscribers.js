@@ -18,6 +18,10 @@ class BusinessSubscribers extends Component {
   }
 
   componentDidMount() {
+    this.fetchSubscribers()
+  }
+
+  fetchSubscribers() {
     const businessId = this.props.match.params.id;
     BusinessListAPI.fetchSubscribers(businessId, this.updateSubscribers.bind(this));
   }
@@ -113,7 +117,7 @@ class BusinessSubscribers extends Component {
       } else {
         return (
           <div className="container subscribers-table">
-            <SubscriberForm businessId={this.props.match.params.id}/>
+            <SubscriberForm businessId={this.props.match.params.id} fetchSubscribers={this.fetchSubscribers.bind(this)}/>
             {this.renderDropDown()}
             <div className="row">
               <div className="col s12 center-align">

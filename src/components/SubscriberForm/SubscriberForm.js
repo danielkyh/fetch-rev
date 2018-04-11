@@ -18,18 +18,24 @@ class SubscriberForm extends Component {
   handleChange(e, field) {
     let prevState = this.state;
     prevState[field] = e.target.value
-    this.setState({ prevState }, () => console.log(this.state))
+    this.setState({ prevState })
   }
 
   createSubscriber(e) {
     e.preventDefault();
-    SubscriberAPI.subscribe(this.state, this.props.businessId, this.createSuccessToast.bind(this))
+    SubscriberAPI.subscribe(this.state, this.props.businessId, this.createSuccessToast.bind(this), this.createErrorToast.bind(this))
   }
 
   createSuccessToast() {
-    window.M.toast({
-      html: 'Successfully Subscribed!', classes: "light-blue accent-1"})
+    window.M.toast({html: 'Successfully Subscribed!', classes: "light-blue accent-1"})
+    this.props.fetchSubscribers()
   }
+
+  createErrorToast(errorMessage) {
+    window.M.toast({
+      html: errorMessage, classes: "red darken-1"})
+  }
+
 
   render() {
     return (
