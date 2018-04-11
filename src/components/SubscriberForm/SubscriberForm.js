@@ -11,14 +11,24 @@ class SubscriberForm extends Component {
     }
   }
 
-  componentDidMount() {
-    SubscriberAPI.subscribe({name: 'daniel', email: 'daniel.yhoo.com'}, 22)
+  disableButton() {
+    return (this.state.name === '' || this.state.email === '');
   }
 
   handleChange(e, field) {
     let prevState = this.state;
     prevState[field] = e.target.value
     this.setState({ prevState }, () => console.log(this.state))
+  }
+
+  createSubscriber(e) {
+    e.preventDefault();
+    SubscriberAPI.subscribe(this.state, this.props.businessId, this.createSuccessToast.bind(this))
+  }
+
+  createSuccessToast() {
+    window.M.toast({
+      html: 'Successfully Subscribed!', classes: "light-blue accent-1"})
   }
 
   render() {
@@ -29,15 +39,15 @@ class SubscriberForm extends Component {
             <h5>Add a Subscriber</h5>
           </div>
           <div className="input-field col s6">
-            <input id="name" type="text" className="validate" />
+            <input onChange={(e) => this.handleChange(e, 'name')} id="name" type="text" className="validate" />
             <label htmlFor="name">Name</label>
           </div>
           <div className="input-field col s6">
-            <input id="email" type="text" className="validate" />
+            <input onChange={(e) => this.handleChange(e, 'email')} id="email" type="text" className="validate" />
             <label htmlFor="email">Email</label>
           </div>
           <div className="col s12 right-align">
-            <a className="waves-effect waves-light btn">Submit</a>
+            <a disabled={this.disableButton()} onClick={this.createSubscriber.bind(this)} className="waves-effect waves-light btn">Submit</a>
           </div>
         </div>
       </div>

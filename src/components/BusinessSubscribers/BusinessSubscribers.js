@@ -49,9 +49,9 @@ class BusinessSubscribers extends Component {
   }
 
   renderRows() {
-    return this.state.filteredSubscribers.map((subscriber) => {
+    return this.state.filteredSubscribers.map((subscriber, idx) => {
       return (
-        <tr>
+        <tr key={idx}>
           <td>{subscriber.name}</td>
           <td>{subscriber.email}</td>
           <td>{subscriber.status}</td>
@@ -113,7 +113,7 @@ class BusinessSubscribers extends Component {
       } else {
         return (
           <div className="container subscribers-table">
-            <SubscriberForm />
+            <SubscriberForm businessId={this.props.match.params.id}/>
             {this.renderDropDown()}
             <div className="row">
               <div className="col s12 center-align">
